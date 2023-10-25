@@ -15,8 +15,6 @@ describe('Account data', () => {
   const player: anchor.Wallet = new anchor.Wallet(playerKeyPair);
   const keypair = anchor.web3.Keypair.fromSecretKey(new Uint8Array(JSON.parse(keypairRaw)));
   const vendor: anchor.Wallet = new anchor.Wallet(keypair);
-  // const vendor = anchor.web3.Keypair.generate();
-  // const player = anchor.web3.Keypair.generate();
   const provider = new anchor.AnchorProvider(connection, vendor, {});
   const program: anchor.Program = new anchor.Program(CoinFlip as any, programId, provider);
 
@@ -37,7 +35,7 @@ describe('Account data', () => {
         coinFlip,
         systemProgram: anchor.web3.SystemProgram.programId,
       })
-      .signers([playerOne.payer])
+      .signers([playerOne.payer, playerTwo.payer])
       .rpc();
 
     console.log(tx)
@@ -104,16 +102,16 @@ describe('Account data', () => {
     console.log(coinFlipPDA.toBase58())
     const betAmount = new anchor.BN(0.5 * LAMPORTS_PER_SOL);
     const randomSeed = new anchor.BN(Math.floor(Math.random() * 100000));
-    await vendorProgram
-      .methods
-      .setup(player.publicKey, betAmount, randomSeed)
-      .accounts({
-        coinFlip: coinFlipPDA,
-        vendor: vendor.publicKey,
-        systemProgram: anchor.web3.SystemProgram.programId,
-      })
-      .signers([vendor.payer])
-      .rpc()
+    // await vendorProgram
+    //   .methods
+    //   .setup(player.publicKey, betAmount, randomSeed)
+    //   .accounts({
+    //     coinFlip: coinFlipPDA,
+    //     vendor: vendor.publicKey,
+    //     systemProgram: anchor.web3.SystemProgram.programId,
+    //   })
+    //   .signers([vendor.payer])
+    //   .rpc()
     console.log('step 1')
     await play(provider, playerProgram, coinFlipPDA, vendor, player);
 
