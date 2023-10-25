@@ -1,0 +1,12 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "./programs/program-derived-addresses/Cargo.toml",
+        "./programs/program-derived-addresses/Cargo.toml",
+        "./programs/program-derived-addresses/Cargo.toml",
+        "./programs/program-derived-addresses/Cargo.toml",
+        "./programs/program-derived-addresses/Cargo.toml",
+        "./programs/program-derived-addresses/Cargo.toml",
+        "./programs/program-derived-addresses/Cargo.toml",
+        "./programs/program-derived-addresses/Cargo.toml"
+    ]
+}
